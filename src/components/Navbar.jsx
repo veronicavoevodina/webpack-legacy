@@ -1,16 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import img from '../images/logo.svg';
-import { DataList } from '../Data';
-import { socialLinks } from '../Data';
+import React, { useState, useEffect } from "react";
+import img from "../images/logo.svg";
+import { DataList, socialLinks } from "../Data";
 
 const Navbar = () => {
   const [active, setActive] = useState(false);
   useEffect(() => {
     if (active) {
-      document.addEventListener('click', function (e) {
+      document.addEventListener("click", function (e) {
         if (
-          e.target.className !== 'navbar-link' &&
-          e.target.className !== 'fas fa-bars'
+          e.target.className !== "navbar-link" &&
+          e.target.className !== "fas fa-bars"
         ) {
           setActive(false);
         }
@@ -22,12 +21,12 @@ const Navbar = () => {
       <div className="nav-center">
         <div className="nav-header">
           <img src={img} className="nav-logo" alt="backroads" />
-          <ul className={active ? 'navbar-links active' : 'navbar-links'}>
+          <ul className={active ? "navbar-links active" : "navbar-links"}>
             {DataList.map((link) => {
               return (
                 <li
                   key={link.id}
-                  style={{ width: '100%', textAlign: 'center' }}
+                  style={{ width: "100%", textAlign: "center" }}
                   onClick={() => setActive(false)}
                 >
                   <a href={link.href} className="navbar-link">

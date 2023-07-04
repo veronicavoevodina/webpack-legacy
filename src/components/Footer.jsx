@@ -1,6 +1,5 @@
-import React from 'react';
-import { DataList } from '../Data';
-import { socialLinks } from '../Data';
+import React from "react";
+import { DataList, socialLinks } from "../Data";
 
 const Footer = () => {
   return (

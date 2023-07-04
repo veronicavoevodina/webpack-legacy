@@ -1,6 +1,6 @@
-import React from 'react';
-import Title from './Title';
-import Service from './Service';
+import React from "react";
+import Title from "./Title";
+import Service from "./Service";
 
 const Services = () => {
   return (

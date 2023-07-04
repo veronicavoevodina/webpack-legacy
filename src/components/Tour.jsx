@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const Tour = ({ images, date, title, info, location, duration, price }) => {
   return (
@@ -16,7 +16,7 @@ const Tour = ({ images, date, title, info, location, duration, price }) => {
           <p>
             <span>
               <i className="fas fa-map"></i>
-            </span>{' '}
+            </span>{" "}
             {location}
           </p>
           <p>{duration}</p>
