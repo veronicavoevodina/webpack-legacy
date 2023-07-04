@@ -1,12 +1,13 @@
 const path = require('path');
-// const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const { merge } = require('webpack-merge');
 const Dotenv = require('dotenv-webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const BundleAnalyzerPlugin =
+  require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const CompressionPlugin = require('compression-webpack-plugin');
 
 const baseConfig = (module.exports = {
   mode: 'development',
@@ -24,7 +25,6 @@ const baseConfig = (module.exports = {
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'src', 'index.html'),
     }),
-    // process.env.SERVE && new ReactRefreshWebpackPlugin(),
     new ESLintPlugin({
       extensions: ['js', 'jsx', 'ts', 'tsx'],
       exclude: 'node_modules',
@@ -38,6 +38,8 @@ const baseConfig = (module.exports = {
       },
       canPrint: true,
     }),
+    new BundleAnalyzerPlugin(),
+    new CompressionPlugin(),
   ],
   optimization: {
     minimize: true,
