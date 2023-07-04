@@ -8,6 +8,7 @@ const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const BundleAnalyzerPlugin =
   require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const CompressionPlugin = require('compression-webpack-plugin');
+const CriticalCssPlugin = require('critical-css-webpack-plugin');
 
 const baseConfig = (module.exports = {
   mode: 'development',
@@ -40,6 +41,23 @@ const baseConfig = (module.exports = {
     }),
     new BundleAnalyzerPlugin(),
     new CompressionPlugin(),
+    new CriticalCssPlugin({
+      base: path.resolve(__dirname, 'dist'),
+      src: 'index.html',
+      target: 'critical.css',
+      inline: true,
+      extract: true,
+      dimensions: [
+        {
+          width: 375,
+          height: 667,
+        },
+        {
+          width: 1440,
+          height: 900,
+        },
+      ],
+    }),
   ],
   optimization: {
     minimize: true,
