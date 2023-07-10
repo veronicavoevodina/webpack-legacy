@@ -23,9 +23,6 @@ const baseConfig = (module.exports = {
   resolve: {
     extensions: ['.tsx', '.ts', '.jsx', '.js'],
   },
-  devServer: {
-    port: process.env.PORT || 3000,
-  },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'src', 'index.html'),
@@ -62,8 +59,6 @@ const baseConfig = (module.exports = {
         },
       ],
     }),
-
-    process.env.SERVE && new ReactRefreshWebpackPlugin(),
   ],
   optimization: {
     minimize: true,
