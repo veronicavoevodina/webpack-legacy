@@ -9,6 +9,7 @@ const BundleAnalyzerPlugin =
   require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const CompressionPlugin = require('compression-webpack-plugin');
 const CriticalCssPlugin = require('critical-css-webpack-plugin');
+const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
 
 const baseConfig = (module.exports = {
   mode: 'development',
@@ -21,6 +22,9 @@ const baseConfig = (module.exports = {
   },
   resolve: {
     extensions: ['.tsx', '.ts', '.jsx', '.js'],
+  },
+  devServer: {
+    port: process.env.PORT || 3000,
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -58,6 +62,8 @@ const baseConfig = (module.exports = {
         },
       ],
     }),
+
+    process.env.SERVE && new ReactRefreshWebpackPlugin(),
   ],
   optimization: {
     minimize: true,
