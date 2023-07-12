@@ -1,14 +1,17 @@
 {
   "name": "webpack1",
+  "sideEffects": [
+    "./src/**/*"
+  ],
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "cross-env SERVE=true webpack serve",
-    "build": "webpack --config ./webpack.config.js --env mode=prod",
-    "prod": "webpack --node-env=production",
+    "start": "webpack serve --open --config webpack.dev.config.js",
+    "build": "webpack --config webpack.prod.config.js",
+    "prod": "webpack --mode=production",
     "clear": "rd /s /q dist",
     "lint": "eslint .  --сache",
-    "lint:fix": "eslint . --fix",
+    "lint:fix": "eslint --fix --ext .js,.jsx .",
     "deploy": "gh-pages -d ./dist -e webpack-legacy"
   },
   "keywords": [],

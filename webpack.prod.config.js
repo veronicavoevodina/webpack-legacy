@@ -1,11 +1,13 @@
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { merge } = require("webpack-merge");
+const common = require("./webpack.config.js");
 
-module.exports = {
-  mode: 'production',
+module.exports = merge(common, {
+  mode: "production",
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'styles/[name].[contenthash].css',
-      chunkFilename: '[id].css',
+      filename: "styles/[name].[contenthash].css",
+      chunkFilename: "[id].css",
     }),
   ],
 
@@ -16,16 +18,16 @@ module.exports = {
         use: [
           MiniCssExtractPlugin.loader,
           {
-            loader: 'css-loader',
+            loader: "css-loader",
             options: {
               importLoaders: 2,
               sourceMap: false,
             },
           },
-          'postcss-loader',
-          'sass-loader',
+          "postcss-loader",
+          "sass-loader",
         ],
       },
     ],
   },
-};
+});

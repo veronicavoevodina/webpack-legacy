@@ -35,7 +35,7 @@ export const services = [
     id: 3,
     icon: "fas fa-socks fa-fw",
     title: "amazing comfort",
-    text: `Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    text: `Lkjorem ipsum dolor sit amet consectetur adipisicing elit.
               Asperiores, officia.`,
   },
 ];
